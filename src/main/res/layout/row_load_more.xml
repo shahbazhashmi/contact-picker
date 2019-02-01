@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout android:layout_height="wrap_content"
+                                             android:layout_width="match_parent"
+                                             android:background="@color/rowBackground"
+                                             xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ProgressBar
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:padding="16dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
+</android.support.constraint.ConstraintLayout>

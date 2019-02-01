@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Contact Picker</string>
+    <string name="contact_not_found">Contacts not found</string>
+    <string name="search_not_found">Search result not found</string>
+    <string name="contact_permission_required">Read contact permission required</string>
+    <string name="finish">Finish</string>
+    <string name="cancel">Cancel</string>
+    <string name="select_restrict">"cannot select more than %1$s contacts"</string>
+</resources>

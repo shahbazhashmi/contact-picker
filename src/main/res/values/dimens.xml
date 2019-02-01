@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="contactDp">60dp</dimen>
+    <dimen name="rowPadding">16dp</dimen>
+
+    <dimen name="font1">16sp</dimen>
+    <dimen name="font2">16sp</dimen>
+
+</resources>
