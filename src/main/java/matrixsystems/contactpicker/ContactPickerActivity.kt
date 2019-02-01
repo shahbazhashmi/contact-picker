@@ -30,6 +30,7 @@ internal class ContactPickerActivity : AppCompatActivity() , ContactFetchListene
     private var viewState = SHOW_LOADING
 
     private var fetchedAll = false
+    private var isLoading = false
 
     lateinit var pickerConfig : PickerConfig
     lateinit var footerLt : RelativeLayout
@@ -77,7 +78,7 @@ internal class ContactPickerActivity : AppCompatActivity() , ContactFetchListene
                 val totalItemCount = mLayoutManager.getItemCount();
                 val firstVisibleItemIndex = mLayoutManager.findFirstVisibleItemPosition();
 
-                if (viewState != SHOW_LOADING && !fetchedAll && (totalItemCount - visibleItemCount) <= firstVisibleItemIndex) {
+                if (!isLoading && !fetchedAll && (totalItemCount - visibleItemCount) <= firstVisibleItemIndex) {
                     loadData(SEARCH, ++PAGE)
                 }
             }
@@ -112,6 +113,7 @@ internal class ContactPickerActivity : AppCompatActivity() , ContactFetchListene
     private fun loadData(search : String, page : Int){
         SEARCH = search
         PAGE = page
+        isLoading = true
         if(PAGE==0) { // show main loader
             showState(SHOW_LOADING)
         }else{ // show load more loader
@@ -188,6 +190,7 @@ internal class ContactPickerActivity : AppCompatActivity() , ContactFetchListene
             contactAdapter.showLoading(false)
         }
 
+        isLoading = false
         contactAdapter.notifyDataSetChanged()
     }
 
