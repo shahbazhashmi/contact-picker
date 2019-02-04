@@ -6,6 +6,8 @@
 
 ![](contact_picker_gif.gif)
 
+<br>
+
 ### Usage
 
 1. Create picker config object
@@ -36,6 +38,8 @@ public override fun onActivityResult(requestCode: Int, resultCode: Int, data: In
         }
     }
 ```
+
+<br>
 
 ### Note
 
