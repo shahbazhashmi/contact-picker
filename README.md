@@ -1,37 +1,47 @@
-## Welcome to GitHub Pages
+## contact-picker
 
-You can use the [editor on GitHub](https://github.com/shahbazhashmi/contact-picker/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+### Introduction
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+**Contact Picker** is a simple and light weight contact picker library for Android. In order to maintain its simplicity and ease of use runtime permission is not handled in the library.
 
-### Markdown
+![](contact_picker_gif.gif)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+<br>
+
+### Usage
+
+1. Create picker config object
 
 ```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+val pickerConfig = PickerConfig.build(this@MainActivity, ({
+                toolbarTitle = "Contact Picker"
+                loaderColor = ContextCompat.getColor(activity, R.color.colorPrimaryDark)
+                selectLimit = 5
+            }))
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+2. Open contact picker
 
-### Jekyll Themes
+```
+ContactPicker.openPicker(this@MainActivity, pickerConfig)
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/shahbazhashmi/contact-picker/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+3. Listen selected contacts in onActivityResult
 
-### Support or Contact
+```
+public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == ContactPicker.PICKER_REQUEST) {
+            if (resultCode == Activity.RESULT_OK) {
+                val list = data!!.getParcelableArrayListExtra<Contact>(ContactPicker.CONTACTS_LIST)
+                Log.d("result", "got data")
+            }
+        }
+    }
+```
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+<br>
+
+### Note
+
+1. Grant contact permission before open conatct picker in Android 6 or above
+2. Maximum selection limit of contacts is 20
